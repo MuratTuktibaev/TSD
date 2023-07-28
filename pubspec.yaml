@@ -29,7 +29,7 @@ dependencies:
   flutter_bloc: ^8.1.2
   flutter_localizations:
     sdk: flutter
-  flutter_masked_text: ^0.8.0
+  flutter_masked_text2: ^0.9.1
   flutter_multi_formatter: ^2.10.2
   flutter_secure_storage: ^8.0.0
   flutter_svg: ^2.0.4 

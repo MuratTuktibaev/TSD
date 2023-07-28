@@ -61,22 +61,24 @@ class _FillInvoiceScreenState extends State<FillInvoiceScreen> {
             },
             loadedState: () {
               context.loaderOverlay.hide();
-              buildSuccessCustomSnackBar(
-                context,
-                'Накладная будет загружена в 1С в течении 15 минут !',
-              );
+              // buildSuccessCustomSnackBar(
+              //   context,
+              //   'Накладная будет загружена в 1С в течении 15 минут !',
+              // );
               widget.isFromPharmacyPage
                   ? BlocProvider.of<PharmacyArrivalScreenCubit>(context)
                       .onRefreshOrders(status: 1)
                   : BlocProvider.of<WarehouseArrivalScreenCubit>(context)
                       .onRefreshOrders(status: 1);
-              AppRouter.push(
-                context,
-                GoodsListScreen(
-                  isFromPharmacyPage: true,
-                  pharmacyOrder: widget.pharmacyOrder,
-                ),
-              );
+
+              // AppRouter.push(
+              //   context,
+              //   GoodsListScreen(
+              //     isFromPharmacyPage: true,
+              //     pharmacyOrder: widget.pharmacyOrder,
+              //   ),
+              // );
+              //
               // TODO: First goods list
               // AppRouter.pushAndRemoveUntilRoot(
               //   context,
@@ -274,6 +276,7 @@ class _FillInvoiceScreenState extends State<FillInvoiceScreen> {
                           disabledColor: ColorPalette.orangeInactive,
                           padding: EdgeInsets.zero,
                           onPressed: () {
+
                             if (vmodel
                                     .incomeNumber.controller.text.isNotEmpty &&
                                 vmodel.incomeNumberDateController.text
@@ -286,7 +289,7 @@ class _FillInvoiceScreenState extends State<FillInvoiceScreen> {
                                         orderId: widget.isFromPharmacyPage
                                             ? widget.pharmacyOrder!.id
                                             : widget.warehouseOrder!.id,
-                                        status: 3,
+                                        status: 2,
                                         incomingNumber: vmodel.incomeNumber
                                                 .controller.text.isEmpty
                                             ? null
@@ -321,7 +324,7 @@ class _FillInvoiceScreenState extends State<FillInvoiceScreen> {
                                       orderId: widget.isFromPharmacyPage
                                           ? widget.pharmacyOrder!.id
                                           : widget.warehouseOrder!.id,
-                                      status: 3,
+                                      status: 2,
                                       incomingNumber: vmodel.incomeNumber
                                               .controller.text.isEmpty
                                           ? null
@@ -343,7 +346,19 @@ class _FillInvoiceScreenState extends State<FillInvoiceScreen> {
                                       counteragentId: vmodel.recipientId == -1
                                           ? null
                                           : vmodel.recipientId,
+
                                     );
+
+                              AppRouter.push(
+                              context,
+                              GoodsListScreen(
+                              isFromPharmacyPage: true,
+                              pharmacyOrder: widget.pharmacyOrder,
+                              ),
+                              );
+
+
+
                             } else {
                               buildErrorCustomSnackBar(
                                 context,

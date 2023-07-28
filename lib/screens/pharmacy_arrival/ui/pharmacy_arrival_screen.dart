@@ -30,6 +30,8 @@ import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../goods_list/ui/move_goods_list_screen.dart';
+
 class PharmacyArrivalScreen extends StatefulWidget {
   const PharmacyArrivalScreen();
 

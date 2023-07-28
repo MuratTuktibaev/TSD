@@ -23,6 +23,9 @@ import 'package:pharmacy_arrival/widgets/snackbar/custom_snackbars.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
+import '../../common/signature/cubit/signature_screen_cubit.dart';
+import '../../move_data/move_products_cubit/move_products_screen_cubit.dart';
+
 class GoodsListScreen extends StatefulWidget {
   final bool isFromPharmacyPage;
   final PharmacyOrderDTO? pharmacyOrder;
@@ -573,19 +576,33 @@ class _BuildBodyState extends State<_BuildBody> {
               height: 40,
               color: ColorPalette.orange,
               onPressed: () {
+                buildSuccessCustomSnackBar(
+                  context,
+                  'Накладная будет загружена в 1С в течении 30 минут !',
+                );
+                BlocProvider.of<SignatureScreenCubit>(
+                  context,
+                )
+                    .updatePharmacyOrderStatus(
+                  orderId: widget.isFromPharmacyPage
+                      ? widget.pharmacyOrder!.id
+                      : widget.warehouseOrder!.id,
+                  status: 3,
+                  //accept: 1,
+                );
                 AppRouter.pushAndRemoveUntilRoot(
                   context,
                   const PharmacyArrivalScreen(),
                 );
                 // TODO: First goods list
-                // AppRouter.push(
+                //  AppRouter.push(
                 //   context,
                 //   FillInvoiceScreen(
                 //     isFromPharmacyPage: widget.isFromPharmacyPage,
                 //     pharmacyOrder: widget.pharmacyOrder,
                 //     warehouseOrder: widget.warehouseOrder,
                 //   ),
-                // );
+                //  );
               },
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
