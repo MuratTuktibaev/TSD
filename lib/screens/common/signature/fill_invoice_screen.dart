@@ -39,6 +39,7 @@ class _FillInvoiceScreenState extends State<FillInvoiceScreen> {
 
   String? recipient;
   int recipientId = -1;
+
   @override
   void dispose() {
     focusNode1.dispose();
@@ -49,6 +50,16 @@ class _FillInvoiceScreenState extends State<FillInvoiceScreen> {
   @override
   Widget build(BuildContext context) {
     final FillInvoiceVModel vmodel = context.read<FillInvoiceVModel>();
+
+    if (widget.pharmacyOrder?.incomingDate != null) {
+      vmodel.incomeNumberDateController.text =
+          DateFormat("yyyy-MM-dd").format((DateTime.tryParse((widget.pharmacyOrder?.incomingDate as String) + " 00:00:00") as DateTime));
+    }
+    if (widget.pharmacyOrder?.incomingNumber != null) {
+      vmodel.incomeNumber.controller.text =
+      widget.pharmacyOrder?.incomingNumber as String;
+    }
+    
     return AppLoaderOverlay(
       child: BlocConsumer<SignatureScreenCubit, SignatureScreenState>(
         listener: (context, state) {
@@ -165,10 +176,21 @@ class _FillInvoiceScreenState extends State<FillInvoiceScreen> {
                                       );
                                     },
                                   );
-                                  if (date != null) {
-                                    vmodel.incomeNumberDateController.text =
-                                        DateFormat("yyyy-MM-dd").format(date);
+                                  if (widget.pharmacyOrder?.createdAt != null) {
+                                    var currentDate =  DateTime.tryParse(widget.pharmacyOrder?.createdAt as String);
+                                    if(date!.isBefore(currentDate!)){
+                                      buildErrorCustomSnackBar(
+                                        context,
+                                        "Укажите корректную дату.",
+                                      );
+                                    } else {
+                                      if (date != null) {
+                                        vmodel.incomeNumberDateController.text =
+                                            DateFormat("yyyy-MM-dd").format(date);
+                                      }
+                                    }
                                   }
+
                                 },
                                 child: Row(
                                   mainAxisAlignment:
