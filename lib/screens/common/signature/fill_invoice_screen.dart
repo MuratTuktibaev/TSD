@@ -178,7 +178,8 @@ class _FillInvoiceScreenState extends State<FillInvoiceScreen> {
                                   );
                                   if (widget.pharmacyOrder?.createdAt != null) {
                                     var currentDate =  DateTime.tryParse(widget.pharmacyOrder?.createdAt as String);
-                                    if(date!.isBefore(currentDate!)){
+                                    if (currentDate != null) {
+                                    if(date!.isBefore(currentDate.add(Duration(hours:-24))!)){
                                       buildErrorCustomSnackBar(
                                         context,
                                         "Укажите корректную дату.",
@@ -188,6 +189,7 @@ class _FillInvoiceScreenState extends State<FillInvoiceScreen> {
                                         vmodel.incomeNumberDateController.text =
                                             DateFormat("yyyy-MM-dd").format(date);
                                       }
+                                    }
                                     }
                                   }
 
