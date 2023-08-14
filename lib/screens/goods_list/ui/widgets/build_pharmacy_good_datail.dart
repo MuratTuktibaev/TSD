@@ -1,5 +1,3 @@
-// ignore_for_file: noop_primitive_operations
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pharmacy_arrival/core/styles/color_palette.dart';
@@ -87,9 +85,7 @@ class BuildPharmacyGoodDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 32,
-                    child: Row(
+                  Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -112,7 +108,19 @@ class BuildPharmacyGoodDetails extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ),
+                  // const SizedBox( Мурат убрал не нужный
+                  //   height: 8,
+                  // ),
+                  // Text(
+                  //   'Серия № ${good.series ?? 'null'}',
+                  //   style: ThemeTextStyle.textStyle14w600
+                  //       .copyWith(color: ColorPalette.grayText),
+                  // ),
+                  // Text(
+                  //   'Серийный № ${good.serialCode ?? 'null'}',
+                  //   style: ThemeTextStyle.textStyle14w600
+                  //       .copyWith(color: ColorPalette.grayText),
+                  // ),
                   const SizedBox(
                     height: 8,
                   ),
@@ -122,20 +130,9 @@ class BuildPharmacyGoodDetails extends StatelessWidget {
                         .copyWith(color: ColorPalette.grayText),
                   ),
                   Text(
-                    'Серийный № ${good.serialCode ?? 'null'}',
-                    style: ThemeTextStyle.textStyle14w600
-                        .copyWith(color: ColorPalette.grayText),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  SizedBox(
-                    height: 80,
-                    child: Text(
-                      '${good.name}',
-                      overflow: TextOverflow.clip,
-                      style: ThemeTextStyle.textStyle20w600,
-                    ),
+                    '${good.name}',
+                    overflow: TextOverflow.fade,
+                    style: ThemeTextStyle.textStyle20w600,
                   ),
                   const SizedBox(
                     height: 8,
