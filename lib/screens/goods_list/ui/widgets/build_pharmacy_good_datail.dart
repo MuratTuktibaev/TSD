@@ -108,26 +108,21 @@ class BuildPharmacyGoodDetails extends StatelessWidget {
                         ),
                       ],
                     ),
-                  // const SizedBox( Мурат убрал не нужный
-                  //   height: 8,
-                  // ),
-                  // Text(
-                  //   'Серия № ${good.series ?? 'null'}',
-                  //   style: ThemeTextStyle.textStyle14w600
-                  //       .copyWith(color: ColorPalette.grayText),
-                  // ),
+                  const SizedBox( //Мурат убрал не нужный
+                    height: 8,
+                  ),
+                  Text(
+                    'Серия № ${good.series ?? 'null'}',
+                    style: ThemeTextStyle.textStyle13w300
+                        .copyWith(color: ColorPalette.grayText),
+                  ),
                   // Text(
                   //   'Серийный № ${good.serialCode ?? 'null'}',
                   //   style: ThemeTextStyle.textStyle14w600
                   //       .copyWith(color: ColorPalette.grayText),
                   // ),
-                  const SizedBox(
+                  const SizedBox( //Мурат
                     height: 8,
-                  ),
-                  Text(
-                    'Серия № ${good.series ?? 'null'}',
-                    style: ThemeTextStyle.textStyle14w600
-                        .copyWith(color: ColorPalette.grayText),
                   ),
                   Text(
                     '${good.name}',
@@ -275,9 +270,9 @@ class BuildPharmacyGoodDetails extends StatelessWidget {
                       Text(
                         'Пересорт серий:   ${good.reSorting}'.toUpperCase(),
                       ),
-                      Text(
-                        'Неподходящий срок:   ${good.srok}'.toUpperCase(),
-                      ),
+                      // Text(
+                      //   'Неподходящий срок:   ${good.srok}'.toUpperCase(),
+                      // ),
                     ],
                   )
                 ],

@@ -544,7 +544,7 @@ class _BuildBodyState extends State<_BuildBody> {
                             }
                           },
                           child: SizedBox(
-                            // height: 395,
+                             height: 381,
                             child: BuildPharmacyGoodDetails(
                               searchController: widget.searchController,
                               currentIndex: currentIndex,
